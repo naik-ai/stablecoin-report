@@ -1,0 +1,31 @@
+name: python linting and testing
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest 
+    steps:
+    # Python
+    - uses: actions/checkout@v4
+    - run: git fetch --prune --unshallow
+    - name: Set up Python 3.11.4
+      uses: actions/setup-python@v3.0.0
+      with:
+        python-version: 3.11.4
+    # Pipenv
+    - name: Install pipenv
+      run: pip install pipenv
+    
+    - name: Install dependencies
+      run: pipenv install --dev
+    
+    # Pre Commit Hook
+    - name: Run pre-commit/action
+      run: pipenv run pre-commit run --all-files
+    
+    - name: Type checker pyright
+      run: pipenv run pyright
+  
+    - name: Test with pytest
+      run: pipenv run pytest

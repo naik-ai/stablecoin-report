@@ -1,0 +1,75 @@
+version: 2
+version_hash: 5HfG0Tq5Qgle0Bs4kuXaMo4W8gMKGWrtLDbQ5RWukLM=
+engine_version: 6
+name: s_coin_gecko
+tables:
+  _dlt_version:
+    columns:
+      version:
+        nullable: false
+        data_type: bigint
+      engine_version:
+        nullable: false
+        data_type: bigint
+      inserted_at:
+        nullable: false
+        data_type: timestamp
+      schema_name:
+        nullable: false
+        data_type: text
+      version_hash:
+        nullable: false
+        data_type: text
+      schema:
+        nullable: false
+        data_type: text
+    write_disposition: skip
+    description: Created by DLT. Tracks schema updates
+  _dlt_loads:
+    columns:
+      load_id:
+        nullable: false
+        data_type: text
+      schema_name:
+        nullable: true
+        data_type: text
+      status:
+        nullable: false
+        data_type: bigint
+      inserted_at:
+        nullable: false
+        data_type: timestamp
+      schema_version_hash:
+        nullable: true
+        data_type: text
+    write_disposition: skip
+    description: Created by DLT. Tracks completed loads
+  cg_overview:
+    columns:
+      current_price:
+          nullable: true
+          data_type: double
+    write_disposition: replace
+settings:
+  detections:
+  - timestamp
+  - iso_timestamp
+  default_hints:
+    not_null:
+    - _dlt_id
+    - _dlt_root_id
+    - _dlt_parent_id
+    - _dlt_load_id
+    - _dlt_list_idx
+    foreign_key:
+    - _dlt_parent_id
+    root_key:
+    - _dlt_root_id
+    unique:
+    - _dlt_id
+normalizers:
+  names: snake_case
+  json:
+    module: dlt.common.normalizers.json.relational
+    config:
+      max_nesting: 0

@@ -1,0 +1,178 @@
+version: 43
+version_hash: DFLjbZE+3RwcwwJlYij0apmLQAUZ6K56w+E5lsGTDt4=
+engine_version: 6
+name: s_coin_gecko
+tables:
+  _dlt_version:
+    columns:
+      version:
+        nullable: false
+        data_type: bigint
+      engine_version:
+        nullable: false
+        data_type: bigint
+      inserted_at:
+        nullable: false
+        data_type: timestamp
+      schema_name:
+        nullable: false
+        data_type: text
+      version_hash:
+        nullable: false
+        data_type: text
+      schema:
+        nullable: false
+        data_type: text
+    write_disposition: skip
+    description: Created by DLT. Tracks schema updates
+  _dlt_loads:
+    columns:
+      load_id:
+        nullable: false
+        data_type: text
+      schema_name:
+        nullable: true
+        data_type: text
+      status:
+        nullable: false
+        data_type: bigint
+      inserted_at:
+        nullable: false
+        data_type: timestamp
+      schema_version_hash:
+        nullable: true
+        data_type: text
+    write_disposition: skip
+    description: Created by DLT. Tracks completed loads
+  cg_overview:
+    columns:
+      current_price:
+        nullable: true
+        data_type: double
+      id:
+        nullable: true
+        data_type: text
+      symbol:
+        nullable: true
+        data_type: text
+      name:
+        nullable: true
+        data_type: text
+      image:
+        nullable: true
+        data_type: text
+      market_cap:
+        nullable: true
+        data_type: bigint
+      market_cap_rank:
+        nullable: true
+        data_type: bigint
+      fully_diluted_valuation:
+        nullable: true
+        data_type: bigint
+      total_volume:
+        nullable: true
+        data_type: bigint
+      high_24h:
+        nullable: true
+        data_type: bigint
+      low_24h:
+        nullable: true
+        data_type: bigint
+      price_change_24h:
+        nullable: true
+        data_type: double
+      price_change_percentage_24h:
+        nullable: true
+        data_type: double
+      market_cap_change_24h:
+        nullable: true
+        data_type: bigint
+      market_cap_change_percentage_24h:
+        nullable: true
+        data_type: double
+      circulating_supply:
+        nullable: true
+        data_type: double
+      total_supply:
+        nullable: true
+        data_type: double
+      max_supply:
+        nullable: true
+        data_type: double
+      ath:
+        nullable: true
+        data_type: bigint
+      ath_change_percentage:
+        nullable: true
+        data_type: double
+      ath_date:
+        nullable: true
+        data_type: timestamp
+      atl:
+        nullable: true
+        data_type: double
+      atl_change_percentage:
+        nullable: true
+        data_type: double
+      atl_date:
+        nullable: true
+        data_type: timestamp
+      last_updated:
+        nullable: true
+        data_type: timestamp
+      _dlt_load_id:
+        nullable: false
+        data_type: text
+      _dlt_id:
+        nullable: false
+        unique: true
+        data_type: text
+      high_24h__v_double:
+        nullable: true
+        data_type: double
+        variant: true
+      low_24h__v_double:
+        nullable: true
+        data_type: double
+        variant: true
+      market_cap_change_24h__v_double:
+        nullable: true
+        data_type: double
+        variant: true
+      ath__v_double:
+        nullable: true
+        data_type: double
+        variant: true
+      roi:
+        nullable: true
+        data_type: complex
+      total_volume__v_double:
+        nullable: true
+        data_type: double
+        variant: true
+    write_disposition: replace
+    resource: cg_coin_overview
+settings:
+  detections:
+  - timestamp
+  - iso_timestamp
+  default_hints:
+    not_null:
+    - _dlt_parent_id
+    - _dlt_list_idx
+    - _dlt_id
+    - _dlt_load_id
+    - _dlt_root_id
+    foreign_key:
+    - _dlt_parent_id
+    root_key:
+    - _dlt_root_id
+    unique:
+    - _dlt_id
+normalizers:
+  names: snake_case
+  json:
+    module: dlt.common.normalizers.json.relational
+    config:
+      max_nesting: 0

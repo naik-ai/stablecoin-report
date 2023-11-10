@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  actuarial-api:
+    build: .
+    ports:
+      - 8001:8000
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload --loop asyncio
+
+  actuarial-nginx:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+
+
+  # actuarial-db:
+  #   image: postgres
+  #   ports:
+  #     - ${pg_port}:5432
+  #   environment:
+  #     POSTGRES_USER: "${pg_user}"
+  #     POSTGRES_PASSWORD: "${pg_password}"
+  #     POSTGRES_DB: "${pg_db_name}"
+  #   volumes:
+  #     - ./data/db:/var/lib/postgresql/data

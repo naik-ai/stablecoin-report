@@ -1,0 +1,50 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+python-dotenv = "*"
+typing-extensions = "*"
+typing = "*"
+fastapi = "*"
+uvicorn = "*"
+aiohttp = "*"
+asyncio = "*"
+numpy = "*"
+pandas = "*"
+aiometer = "*"
+nest-asyncio = "*"
+pre-commit = "*"
+yfinance= "*"
+reflex = "*"
+httpx = "*"
+pyseas = "*"
+asyncpg = "*"
+faker = "*"
+pycoingecko = "*"
+ydata-profiling = "*"
+pyfeng = "*"
+plotly = "*"
+defillama2 = "*"
+dlt = "*"
+google-cloud-bigquery-storage = "*"
+pydantic = "*"
+pyyaml = "*"
+isort = "*"
+dbt-bigquery = "*"
+dbt-metricflow = "*"
+prefect-dbt = {extras = ["bigquery"], version = "*"}
+pyarrow = "*"
+prefect-gcp = {version = "*", extras = ["secret_manager"]}
+sqlfluff = "*"
+
+[dev-packages]
+pipenv = "*"
+black = "*" 
+pyright = "*"
+pydocstyle = "*"
+pytest = "*"
+
+[requires]
+python_version = "3.11.4"

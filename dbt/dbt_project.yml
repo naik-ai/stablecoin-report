@@ -1,0 +1,23 @@
+name: 'actuarial_dbt'
+version: '1.0.0'
+config-version: 2
+profile: 'actuarial_dbt'
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+docs-paths: [docs]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+models:
+  actuarial_dbt:
+    defilamma:
+      +materialized: view
+      +schema: stablecoins
+    kpis:
+      +materialized: table
+      +schema: kpis

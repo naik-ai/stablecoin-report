@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: stg_defilamma_stablecoins_protocols_overview
+    description: Protocols that have released a stablecoin

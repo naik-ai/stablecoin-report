@@ -1,0 +1,14 @@
+actuarial_dbt:
+  outputs:
+    dev:
+      dataset: stablecoins
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: config/zeta-sol-396504-887026433a0d.json
+      location: US
+      method: service-account
+      priority: interactive
+      project: zeta-sol-396504
+      threads: 10
+      type: bigquery
+  target: dev
